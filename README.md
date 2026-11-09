@@ -10,7 +10,7 @@ Case study for *Data-driven Supply Chain Management & Logistics* (HSLU, MSc in D
 
 | | |
 | --- | --- |
-| **Final report** | [REPORT.md](REPORT.md) · styled version: [REPORT.html](REPORT.html) · [REPORT.pdf](REPORT.pdf) |
+| **Final report** | [REPORT.md](REPORT.md) · styled version: [REPORT.html](REPORT.html) |
 | **Presentation** | [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [PowerPoint with speaker notes](presentation/Inventory_Optimisation_Final_Presentation.pptx) |
 | **Per-article recommendations** | [Part3_ROP_SafetyStock_Recommendations.xlsx](part3_safety_stock_rop/outputs/Part3_ROP_SafetyStock_Recommendations.xlsx) |
 
@@ -44,7 +44,7 @@ Each part has its own README, source code and notebooks.
 ```
 group2-topic1-scm-inventory-optimisation/
 ├── README.md
-├── REPORT.md · REPORT.html · REPORT.pdf    final report
+├── REPORT.md · REPORT.html                 final report
 ├── report/figures/                         report figures
 ├── presentation/                           final slides (PDF, PowerPoint with speaker notes)
 ├── shared/prep.py                          loading and cleaning: stock rebuild, demand tables
@@ -65,3 +65,7 @@ group2-topic1-scm-inventory-optimisation/
 ## Notes on the data
 
 Quantities are anonymised by a constant factor (×1.1107) and values are in the dataset's currency units, so ratios and percentages are unaffected. Master data (lead time, MOQ, price, reorder point) is a 2022 snapshot. See section 8 of the report for all limitations.
+
+## Use of AI
+
+This project was carried out with the support of Claude (Anthropic), an AI assistant. Claude was used to write and run the Python analysis code, build the clustering and simulation models, produce the figures, and draft the report, README and presentation slides. I defined the questions and the overall approach, directed each step, reviewed and checked the results against the data, and made the final decisions on methods and recommendations. I take full responsibility for the content, the analysis and its conclusions.

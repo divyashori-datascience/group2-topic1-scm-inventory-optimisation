@@ -293,3 +293,7 @@ The results are robust to the main data gaps, but three assumptions should be va
 **Next steps:** agree service targets per class with the client, validate lead times for the A-articles, run the A-article pilot for one quarter, and quantify the capital released by phasing out One-offs and Dormant articles.
 
 **Reproducibility:** all analysis runs from the raw file in the project repository [github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation](https://github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation): `shared/prep.py` for cleaning, then `part1_data_analysis`, `part2_article_classification` and `part3_safety_stock_rop`, each with its own README and notebooks.
+
+## Use of AI
+
+This project was carried out with the support of Claude (Anthropic), an AI assistant. Claude was used to write and run the Python analysis code, build the clustering and simulation models, produce the figures, and draft the report, README and presentation slides. I defined the questions and the overall approach, directed each step, reviewed and checked the results against the data, and made the final decisions on methods and recommendations. I take full responsibility for the content, the analysis and its conclusions.
