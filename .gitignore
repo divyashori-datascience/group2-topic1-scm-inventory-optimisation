@@ -1,0 +1,9 @@
+# raw data stays local (632 MB); result tables in outputs/ are kept
+*.csv
+*.csv.gz
+!**/outputs/*.csv
+*.parquet
+_work/
+.ipynb_checkpoints/
+__pycache__/
+.DS_Store
