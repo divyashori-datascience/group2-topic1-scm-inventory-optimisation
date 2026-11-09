@@ -63,7 +63,3 @@ Each part folder has its own README with the method, results and how to run it.
 3. Run the notebooks in order: Part 1 → Part 2 → Part 3.
 
 Quantities in the data are anonymised by a constant factor and values are in the dataset's currency units, so ratios and percentages are unaffected. Master data is a 2022 snapshot; see the report for all limitations.
-
-## Use of AI
-
-This project was carried out with the support of Claude (Anthropic), an AI assistant. Claude was used to write and run the Python analysis code, build the clustering and simulation models, produce the figures, and draft the report, README and presentation slides. I defined the questions and the overall approach, directed each step, reviewed and checked the results against the data, and made the final decisions on methods and recommendations. I take full responsibility for the content, the analysis and its conclusions.
