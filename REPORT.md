@@ -1,7 +1,7 @@
 # Inventory Optimisation – Final Report
 
 *Divya Shori · Data-driven Supply Chain Management & Logistics · Group 2 · HSLU · November 2026*  
-*Code and notebooks: [github.com/divyashori-datascience/scm-inventory-optimisation](https://github.com/divyashori-datascience/scm-inventory-optimisation)*
+*Code and notebooks: [github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation](https://github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation)*
 
 **Presentation:** [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf)
 
@@ -292,4 +292,4 @@ The results are robust to the main data gaps, but three assumptions should be va
 
 **Next steps:** agree service targets per class with the client, validate lead times for the A-articles, run the A-article pilot for one quarter, and quantify the capital released by phasing out One-offs and Dormant articles.
 
-**Reproducibility:** all analysis runs from the raw file in the project repository [github.com/divyashori-datascience/scm-inventory-optimisation](https://github.com/divyashori-datascience/scm-inventory-optimisation): `shared/prep.py` for cleaning, then `part1_data_analysis`, `part2_article_classification` and `part3_safety_stock_rop`, each with its own README and notebooks.
+**Reproducibility:** all analysis runs from the raw file in the project repository [github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation](https://github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation): `shared/prep.py` for cleaning, then `part1_data_analysis`, `part2_article_classification` and `part3_safety_stock_rop`, each with its own README and notebooks.

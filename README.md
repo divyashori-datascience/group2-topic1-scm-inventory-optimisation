@@ -42,7 +42,7 @@ Each part has its own README, source code and notebooks.
 ## Repository structure
 
 ```
-scm-inventory-optimisation/
+group2-topic1-scm-inventory-optimisation/
 ├── README.md
 ├── REPORT.md · REPORT.html · REPORT.pdf    final report
 ├── report/figures/                         report figures
