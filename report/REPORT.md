@@ -3,7 +3,7 @@
 *Divya Shori · Data-driven Supply Chain Management & Logistics · Group 2 · HSLU · November 2026*  
 *Code and notebooks: [github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation](https://github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation)*
 
-**Presentation:** [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf)
+**Presentation:** [Inventory_Optimisation_Final_Presentation.pdf](../presentation/Inventory_Optimisation_Final_Presentation.pdf)
 
 ## Executive summary
 
@@ -25,7 +25,7 @@ Every number in this report comes from a daily stock history we rebuilt per arti
 
 ### The data at a glance
 
-![Top left: stock movements per month 2007–2021. Top right: movements per article, log scale. Bottom left: concentration of usage value (Lorenz curve). Bottom right: unit purchase price, inventory articles vs others](report/figures/r10_glance.png)
+![Top left: stock movements per month 2007–2021. Top right: movements per article, log scale. Bottom left: concentration of usage value (Lorenz curve). Bottom right: unit purchase price, inventory articles vs others](figures/r10_glance.png)
 
 - **Activity grew about five-fold:** 108k movements in 2008, 274k in 2021. Rules set years ago are unlikely to fit today.
 - **A very long tail:** half of all 58,764 articles moved only twice in fifteen years (typically one receipt, one use).
@@ -54,7 +54,7 @@ Every number in this report comes from a daily stock history we rebuilt per arti
 
 **Demand definition:** net sales (type 1) plus usage for production (type 5). Returns are netted out (3% of sales rows are positive, 28% of procurement rows negative). Internal transfers (4) and adjustments (2, 3) are not demand.
 
-![Left: one article's reported vs rebuilt stock on a log scale. Right: quarterly transactions by movement type, 2007–2021](report/figures/r1_cleaning.png)
+![Left: one article's reported vs rebuilt stock on a log scale. Right: quarterly transactions by movement type, 2007–2021](figures/r1_cleaning.png)
 
 The left panel shows why rebuilding matters: one corrupted record would put a single cheap article at 1.1 bn units and inflate 2021 capital from about 8M to almost 2.9 bn. The right panel shows what the business is: 65% of all movements are usage for production, so most stock feeds the company's own production, not retail sales.
 
@@ -62,12 +62,12 @@ The left panel shows why rebuilding matters: one corrupted record would put a si
 
 Capital is growing faster than demand, a large part of it is not managed by any rule, and the rules that exist do not fit the demand they face.
 
-![Top: monthly average stock value 2012–2022, inventory articles vs all others. Bottom: stock value of inventory articles divided by their 12-month usage value](report/figures/r2_capital.png)
+![Top: monthly average stock value 2012–2022, inventory articles vs all others. Bottom: stock value of inventory articles divided by their 12-month usage value](figures/r2_capital.png)
 
 - **Capital moved into inventory articles.** Their stock value rose from 3.5M (2018) to 4.9M (2021), **+39%**, and their share of all stock from 48% to 62%. Stock grew faster than usage: from 30% to 38% of a year's usage.
 - **37% of stock value (2.9M of 7.9M) sits in articles without a reorder point.** That is leftover or speculative stock no replenishment rule controls, a key input for the classification.
 
-![Left: demand patterns of inventory articles (Syntetos–Boylan). Middle: stock value idle for at least x days. Right: cumulative distribution of lead times](report/figures/r3_insights.png)
+![Left: demand patterns of inventory articles (Syntetos–Boylan). Middle: stock value idle for at least x days. Right: cumulative distribution of lead times](figures/r3_insights.png)
 
 - **Demand is mostly irregular.** Only 166 inventory articles (about 10%) have smooth demand; the rest are erratic, lumpy, intermittent or sporadic, the case's *searched demand*. On 5% of demand days, rare large orders carry 29% of volume. One textbook safety-stock formula cannot fit all articles.
 - **12% of stock value (0.94M) has not moved for a year**, 0.42M of it for three years or more. 318 inventory articles keep a reorder point despite no demand for over a year.
@@ -97,7 +97,7 @@ We classified all 20,890 articles with demand in the last three years using K-me
 2. A redundancy filter drops one of every pair with Spearman |ρ| > 0.85: demand lines and weekly CV go. Order-size variability (cv²) is kept: its ρ = 0.90 with frequency is an artefact of one-time demand (cv² = 0 by definition) and falls to 0.49 for articles with three or more demand weeks.
 3. A domain screen keeps four features: price is already inside usage value, lead time leaks today's stocking decision, product type, e-shop and age only profile the classes, and trend is noisy for low-volume articles.
 
-![Lower-triangle Spearman correlation matrix of the 12 candidate features; final features in blue, redundant features in orange](report/figures/r4_corr.png)
+![Lower-triangle Spearman correlation matrix of the 12 candidate features; final features in blue, redundant features in orange](figures/r4_corr.png)
 
 **Final features:** annual usage value (log), weeks with demand (log), order-size variability cv² (log), days since last demand; all standardised.
 
@@ -108,13 +108,13 @@ We classified all 20,890 articles with demand in the last three years using K-me
 | Order-size variability | CV² of non-zero order sizes | how predictable each order is |
 | Recency | days since last demand | whether the article is still alive |
 
-![Violin plots of the four features per class; dot = median, bar = middle 50% of articles](report/figures/r11_features.png)
+![Violin plots of the four features per class; dot = median, bar = middle 50% of articles](figures/r11_features.png)
 
 Each class has a clear fingerprint: weeks with demand separates Runners and Repeaters from the rest, recency separates One-offs from Dormant articles.
 
 **Algorithm, number of classes and validation.**
 
-![Three quality metrics for K-means, Ward and a Gaussian mixture with four classes](report/figures/r13_algos.png)
+![Three quality metrics for K-means, Ward and a Gaussian mixture with four classes](figures/r13_algos.png)
 
 | Check | Result |
 | --- | --- |
@@ -132,11 +132,11 @@ Pure silhouette maximisation was tested and rejected: it kept the binary e-shop 
 
 The four classes separate along two clear directions: how often and how much an article is used (left to right), and how long it has been idle (bottom to top).
 
-![Left: PCA map of all 20,890 active articles coloured by class, with class centres. Right: radar of each class's median percentile on six features](report/figures/r5_pca.png)
+![Left: PCA map of all 20,890 active articles coloured by class, with class centres. Right: radar of each class's median percentile on six features](figures/r5_pca.png)
 
 The first principal component (62% of variance) runs from rarely used, low-value articles to frequent, high-value, variable ones; the second (20%) is recency. Runners sit far right, Dormant articles top left, One-offs bottom left, and Repeaters in between. The radar shows that the classes also differ on features the model never saw: Dormant and One-off articles are the most expensive per unit, while Runners are cheap and often used in production.
 
-![Left: usage value vs days since last demand. Middle: order-size variability vs weeks with demand. Right: silhouette coefficient of each article, grouped by class](report/figures/r6_views.png)
+![Left: usage value vs days since last demand. Middle: order-size variability vs weeks with demand. Right: silhouette coefficient of each article, grouped by class](figures/r6_views.png)
 
 - **Value vs recency:** Runners cluster at recent, high-value demand; Dormant articles start where demand stopped about 14 months ago.
 - **Variability vs frequency:** One-offs and Dormant articles have one or two orders (variability 0); Repeaters order a few times a year with variable sizes; Runners order weekly.
@@ -146,9 +146,9 @@ The first principal component (62% of variance) runs from rarely used, low-value
 
 Only Runners, plus a selected part of the Repeaters, belong on stock; One-offs are bought to order and Dormant articles are phased out.
 
-![Strategy map: each class placed by median orders per year and days since last demand, bubble size = share of usage value, with the strategy for each class](report/figures/r7_strategy.png)
+![Strategy map: each class placed by median orders per year and days since last demand, bubble size = share of usage value, with the strategy for each class](figures/r7_strategy.png)
 
-![Weekly demand 2019–2022 of one typical article per class: Runners (top left), Repeaters (top right), One-offs (bottom left), Dormant (bottom right)](report/figures/r14_fingerprints.png)
+![Weekly demand 2019–2022 of one typical article per class: Runners (top left), Repeaters (top right), One-offs (bottom left), Dormant (bottom right)](figures/r14_fingerprints.png)
 
 *Weekly demand of one typical article per class, 2019–2022:* the Runner is ordered almost every few weeks, the Repeater a handful of times, the One-off and the Dormant article once. The strategy follows from that rhythm: a buffer pays off only where demand comes often enough to turn it over.
 
@@ -194,7 +194,7 @@ A-articles hold about 65% of stock capital and a stockout there costs most, so t
 
 ### How the simulator works
 
-![Schematic of the simulated reorder policy: stock falls with daily demand; at the reorder point an order is placed and arrives after the lead time; safety stock is the buffer below](report/figures/r15_sq.png)
+![Schematic of the simulated reorder policy: stock falls with daily demand; at the reorder point an order is placed and arrives after the lead time; safety stock is the buffer below](figures/r15_sq.png)
 
 1. Every day, for all 1,751 inventory articles in parallel, base demand from 2021 is taken from stock; unmet demand is back-ordered.
 2. When stock plus open orders falls to the reorder point, an order of today's typical size (at least the MOQ) is placed; it arrives after the article's lead time.
@@ -202,11 +202,11 @@ A-articles hold about 65% of stock capital and a stockout there costs most, so t
 4. The demand-driven policy recalculates each reorder point monthly on the last 365 days: `μ·LT + z·σ·√(LT/7)` for steady demand, the p-quantile of past lead-time demand for irregular demand. Safety stock = reorder point − μ·LT.
 5. Timeline without look-ahead: parameters from 2019–20, service level calibrated on 2020, results measured on 2021.
 
-![One A-article through 2021: daily stock on hand and reorder point under today's setting (top) and the demand-driven setting (bottom), same scale](report/figures/r8_trajectory.png)
+![One A-article through 2021: daily stock on hand and reorder point under today's setting (top) and the demand-driven setting (bottom), same scale](figures/r8_trajectory.png)
 
 The example makes the mechanism visible. Today's reorder point (16,661 units) is 3.2 times what this article needs, so it carries about 15,800 units on average. The demand-driven point follows demand month by month and carries about 4,300 units with the same 16 orders and 100% fill: 72% less capital on this one article.
 
-![Left: simulated fill rate on 2020 against the service parameter, per ABC class, with targets. Right: 2021 capital vs fill rate for the demand-driven policy and the current rules](report/figures/r9_calib_tradeoff.png)
+![Left: simulated fill rate on 2020 against the service parameter, per ABC class, with targets. Right: 2021 capital vs fill rate for the demand-driven policy and the current rules](figures/r9_calib_tradeoff.png)
 
 **What it showed**
 
@@ -225,7 +225,7 @@ The example makes the mechanism visible. Today's reorder point (16,661 units) is
 
 A recommendation must survive bad lead times and demand shocks, so we re-ran the 2021 simulation under eight scenarios. Demand shocks are applied to 2021 only; the policy keeps recalculating its reorder points monthly.
 
-![Fill rate under eight scenarios, today's reorder points (orange) vs the recommended policy (blue, labelled with fill and average stock)](report/figures/r12_stress.png)
+![Fill rate under eight scenarios, today's reorder points (orange) vs the recommended policy (blue, labelled with fill and average stock)](figures/r12_stress.png)
 
 | Scenario | Today's reorder points | Recommended: fill | Recommended: avg stock |
 | --- | --- | --- | --- |

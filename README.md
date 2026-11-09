@@ -1,67 +1,69 @@
 # Inventory Management & Optimisation
 
-**Free 1.27M of tied-up capital while raising availability to 95%** by stocking only the right articles and setting every reorder point from demand.
+How a Swiss B2B company can free **1.27M of tied-up capital (−26%)** while keeping **95% of demand served from stock**, by stocking only the right articles and setting every reorder point from demand.
 
-Case study for *Data-driven Supply Chain Management & Logistics* (HSLU, MSc in Data Science & Artificial Intelligence) · Author: **Divya Shori**
+*HSLU · Data-driven Supply Chain Management & Logistics · MSc in Data Science & Artificial Intelligence · Group 2, Topic 1 · Divya Shori*
 
 ---
 
-## Read the work
+## Start here
 
 | | |
 | --- | --- |
-| **Final report** | [REPORT.md](REPORT.md) · styled version: [REPORT.html](REPORT.html) |
-| **Presentation** | [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [PowerPoint with speaker notes](presentation/Inventory_Optimisation_Final_Presentation.pptx) |
-| **Per-article recommendations** | [Part3_ROP_SafetyStock_Recommendations.xlsx](part3_safety_stock_rop/outputs/Part3_ROP_SafetyStock_Recommendations.xlsx) |
+| **Report** | [report/REPORT.md](report/REPORT.md) · styled version: [report/REPORT.html](report/REPORT.html) |
+| **Presentation** | [PDF](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [PowerPoint with speaker notes](presentation/Inventory_Optimisation_Final_Presentation.pptx) |
+| **Recommendation per article** | [Part3_ROP_SafetyStock_Recommendations.xlsx](part3_safety_stock_rop/outputs/Part3_ROP_SafetyStock_Recommendations.xlsx) |
 
-## The case
+## The problem
 
-A Swiss B2B company saw capital tied up in stock rise from **16% of revenue (2019) to 27% (2022)**. The data: 2.69M stock movements over 15 years for 58,764 articles. The question: how to reduce capital lockup without hurting availability.
+Capital tied up in stock rose from **16% of revenue (2019) to 27% (2022)**. We analysed 2.69M stock movements for 58,764 articles (2007–2022) to find out where the capital sits, which articles belong on stock, and at what level they should be reordered.
 
-## Results
+## Key results
+
+Simulated on 2021, a year the method never saw, for the 1,751 articles stocked today:
 
 | | Today | Recommended |
 | --- | --- | --- |
-| Average stock, inventory articles | 4.92M (2021) | **3.65M (−26%)** |
-| Fill rate, value-weighted | 71% if today's reorder points were followed | **95%** (A-articles 97%) |
-| Holding cost saved | – | **≈ 0.25M a year** (20% rate, assumed) |
-| Robustness | – | ≥ 85% fill in all 8 stress scenarios |
+| Average stock | 4.92M | **3.65M (−26%)** |
+| Fill rate (value-weighted) | 71% if today's reorder points were followed | **95%** (A-articles 97%) |
+| Holding cost saved per year | – | **≈ 0.25M** (at an assumed 20% rate) |
+| Under 8 stress scenarios | – | **≥ 85%** fill in every one |
 
-**Recommended strategy:** clean the range (de-list 427 articles, clear 0.94M idle stock) → stock by class → set reorder points from demand, recalculated monthly, starting with an A-article pilot.
+**Recommendation:** clean the range (de-list 427 articles, clear 0.94M of idle stock) → stock by class → set reorder points from demand, recalculated monthly, starting with an A-article pilot.
 
-## Approach
+## How the work is organised
 
-| Part | Question | Method | Result |
+| Part | Question | What we did | Folder |
 | --- | --- | --- | --- |
-| [1 · Data analysis](part1_data_analysis/) | Where does the capital sit? | data audit, stock rebuilt from movements, capital, recency, demand patterns | stock +39% since 2018; 37% of stock value has no reorder point |
-| [2 · Classification](part2_article_classification/) | Which articles belong on stock? | 12 → 4 features, K-means vs Ward vs GMM, bootstrap stability 0.98 | Runners (10% of articles, 74% of usage) on stock; One-offs and Dormant off |
-| [3 · Reorder points](part3_safety_stock_rop/) | At what level should they reorder? | pattern-specific reorder points, service levels by ABC, daily simulation, out-of-sample test and stress test | 95% fill at 26% less capital |
+| 1 · Data analysis | Where does the capital sit? | data audit, stock rebuilt from movements, capital and demand analysis | [part1_data_analysis](part1_data_analysis/) |
+| 2 · Classification | Which articles belong on stock? | 4 demand features, K-means into Runners, Repeaters, One-offs, Dormant | [part2_article_classification](part2_article_classification/) |
+| 3 · Reorder points | At what level should they reorder? | demand-driven reorder points, service levels by ABC, daily simulation and stress test | [part3_safety_stock_rop](part3_safety_stock_rop/) |
 
-Each part has its own README, source code and notebooks.
+Each part folder has its own README with the method, results and how to run it.
 
 ## Repository structure
 
 ```
-group2-topic1-scm-inventory-optimisation/
 ├── README.md
-├── REPORT.md · REPORT.html                 final report
-├── report/figures/                         report figures
-├── presentation/                           final slides (PDF, PowerPoint with speaker notes)
-├── shared/prep.py                          loading and cleaning: stock rebuild, demand tables
-├── part1_data_analysis/                    src/ · notebooks/ · outputs/
-├── part2_article_classification/           src/ · notebooks/ · outputs/article_classes.csv
-└── part3_safety_stock_rop/                 src/ (simulator, policy, export) · notebooks/ · outputs/
+├── report/                 final report (Markdown and HTML) and its figures
+├── presentation/           final slides (PDF, and PowerPoint with speaker notes)
+├── shared/                 data loading and cleaning used by all parts
+├── part1_data_analysis/    src/ · notebooks/ · outputs/
+├── part2_article_classification/
+└── part3_safety_stock_rop/
 ```
 
-## Reproduce
+## Run it yourself
 
-1. Place the raw file `anonymized_202602.csv` (632 MB, not in the repository) next to the repository folder, or set `export SCM_DATA=/path/to/anonymized_202602.csv`.
-2. Install Python ≥ 3.10 and the packages:
+1. Put the raw data file `anonymized_202602.csv` (632 MB, not included) in the folder that contains this repository, or set `export SCM_DATA=/path/to/anonymized_202602.csv`.
+2. Install Python 3.10 or newer and the packages:
    ```bash
    pip install pandas numpy scipy scikit-learn matplotlib openpyxl pyarrow jupyter
    ```
 3. Run the notebooks in order: Part 1 → Part 2 → Part 3.
 
-## Notes on the data
+Quantities in the data are anonymised by a constant factor and values are in the dataset's currency units, so ratios and percentages are unaffected. Master data is a 2022 snapshot; see the report for all limitations.
 
-Quantities are anonymised by a constant factor (×1.1107) and values are in the dataset's currency units, so ratios and percentages are unaffected. Master data (lead time, MOQ, price, reorder point) is a 2022 snapshot. See section 8 of the report for all limitations.
+## Use of AI
+
+This project was carried out with the support of Claude (Anthropic), an AI assistant. Claude was used to write and run the Python analysis code, build the clustering and simulation models, produce the figures, and draft the report, README and presentation slides. I defined the questions and the overall approach, directed each step, reviewed and checked the results against the data, and made the final decisions on methods and recommendations. I take full responsibility for the content, the analysis and its conclusions.
