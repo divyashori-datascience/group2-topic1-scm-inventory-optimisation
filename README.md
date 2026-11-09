@@ -65,7 +65,3 @@ group2-topic1-scm-inventory-optimisation/
 ## Notes on the data
 
 Quantities are anonymised by a constant factor (×1.1107) and values are in the dataset's currency units, so ratios and percentages are unaffected. Master data (lead time, MOQ, price, reorder point) is a 2022 snapshot. See section 8 of the report for all limitations.
-
-## Use of AI
-
-This project was carried out with the support of Claude (Anthropic), an AI assistant. Claude was used to write and run the Python analysis code, build the clustering and simulation models, produce the figures, and draft the report, README and presentation slides. I defined the questions and the overall approach, directed each step, reviewed and checked the results against the data, and made the final decisions on methods and recommendations. I take full responsibility for the content, the analysis and its conclusions.
