@@ -11,7 +11,7 @@ How a Swiss B2B company can free **1.27M of tied-up capital (−26%)** while kee
 | | |
 | --- | --- |
 | **Report** | [report/REPORT.md](report/REPORT.md) · styled version: [report/REPORT.html](report/REPORT.html) |
-| **Presentation** | [PDF](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [PowerPoint with speaker notes](presentation/Inventory_Optimisation_Final_Presentation.pptx) |
+| **Presentation** | [PDF](presentation/Final%20Presentation.pdf) · [PowerPoint with speaker notes](presentation/Final%20Presentation.pptx) |
 | **Recommendation per article** | [Part3_ROP_SafetyStock_Recommendations.xlsx](part3_safety_stock_rop/outputs/Part3_ROP_SafetyStock_Recommendations.xlsx) |
 
 ## The problem

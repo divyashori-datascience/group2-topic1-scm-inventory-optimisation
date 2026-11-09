@@ -3,7 +3,7 @@
 *Divya Shori · Data-driven Supply Chain Management & Logistics · Group 2 · HSLU · November 2026*  
 *Code and notebooks: [github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation](https://github.com/divyashori-datascience/group2-topic1-scm-inventory-optimisation)*
 
-**Presentation:** [Inventory_Optimisation_Final_Presentation.pdf](../presentation/Inventory_Optimisation_Final_Presentation.pdf)
+**Presentation:** [Final Presentation.pdf](../presentation/Final%20Presentation.pdf)
 
 ## Executive summary
 
@@ -207,6 +207,16 @@ A-articles hold about 65% of stock capital and a stockout there costs most, so t
 The example makes the mechanism visible. Today's reorder point (16,661 units) is 3.2 times what this article needs, so it carries about 15,800 units on average. The demand-driven point follows demand month by month and carries about 4,300 units with the same 16 orders and 100% fill: 72% less capital on this one article.
 
 ![Left: simulated fill rate on 2020 against the service parameter, per ABC class, with targets. Right: 2021 capital vs fill rate for the demand-driven policy and the current rules](figures/r9_calib_tradeoff.png)
+
+**The case formula, and why we went further**
+
+The case (slide 11) gives a starting formula, which we implemented exactly and simulated alongside our own:
+
+- Safety stock = standard deviation of demand
+- Reorder point = (Quantity ÷ 360) × lead time + safety stock
+- If no lead time exists: keep procurement's rule, safety stock = usage of the last 12 months ÷ 4
+
+On 2021 the case formula reaches 85% fill at 2.43M average stock, a sensible starting point. It has two weaknesses here: it has no service-level setting, so it cannot protect A-articles more than C-articles, and with irregular demand the standard deviation is inflated by rare large orders. Our demand-driven policy keeps the same structure (demand over the lead time plus a buffer), adds a service level per ABC class, and for irregular demand uses the actual history of lead-time demand instead of the standard deviation. That lifts fill to 95% at 3.65M. For the 31 stock articles without a lead time in the master data we follow the case instruction and use the ÷ 4 rule.
 
 **What it showed**
 

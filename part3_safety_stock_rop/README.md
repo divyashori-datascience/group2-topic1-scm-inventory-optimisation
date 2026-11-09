@@ -29,6 +29,7 @@ Values are in the dataset's currency units at current purchase price.
    - intermittent / lumpy / sporadic → `ROP = p-quantile of historical lead-time demand`
    - no demand → `ROP = 0` · no lead time → company fallback `usage 12m / 4`
    - `safety stock = ROP − μ·LT`
+   - baseline from the case (slide 11), simulated for comparison: `SS = σ(demand)`, `ROP = Quantity/360 · LT + SS`
 4. **Service parameter p per ABC class, calibrated by simulation** on 2020 (smallest p reaching A 98% / B 95% / C 90% fill).
 5. **Backtest** on 2021 with a daily (s, Q) simulator: master-data lead time, today's typical order size, back-orders. All policies are compared on the same simulator.
 6. **Feature relevance**: simulation-optimal ROP per article (days of demand) is explained with a random forest (CV R² 0.61), permutation importance, mutual information and Spearman ρ. Drivers: order size in days of demand ≫ demand variability > lead time > trend / article age > value.
