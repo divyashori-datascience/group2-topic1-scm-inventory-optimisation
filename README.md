@@ -11,7 +11,7 @@ Case study for *Data-driven Supply Chain Management & Logistics* (HSLU, MSc in D
 | | |
 | --- | --- |
 | **Final report** | [REPORT.md](REPORT.md) · styled version: [REPORT.html](REPORT.html) · [REPORT.pdf](REPORT.pdf) |
-| **Presentation** | [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [speaker notes](presentation/SPEAKER_NOTES.md) |
+| **Presentation** | [presentation/Inventory_Optimisation_Final_Presentation.pdf](presentation/Inventory_Optimisation_Final_Presentation.pdf) · [PowerPoint with speaker notes](presentation/Inventory_Optimisation_Final_Presentation.pptx) |
 | **Per-article recommendations** | [Part3_ROP_SafetyStock_Recommendations.xlsx](part3_safety_stock_rop/outputs/Part3_ROP_SafetyStock_Recommendations.xlsx) |
 
 ## The case
@@ -46,7 +46,7 @@ scm-inventory-optimisation/
 ├── README.md
 ├── REPORT.md · REPORT.html · REPORT.pdf    final report
 ├── report/figures/                         report figures
-├── presentation/                           final slides (PDF) and speaker notes
+├── presentation/                           final slides (PDF, PowerPoint with speaker notes)
 ├── shared/prep.py                          loading and cleaning: stock rebuild, demand tables
 ├── part1_data_analysis/                    src/ · notebooks/ · outputs/
 ├── part2_article_classification/           src/ · notebooks/ · outputs/article_classes.csv
