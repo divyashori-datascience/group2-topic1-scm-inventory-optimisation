@@ -2,7 +2,7 @@
 
 **Free 1.27M of tied-up capital while raising availability to 95%** by stocking only the right articles and setting every reorder point from demand.
 
-Case study for *Data-driven Supply Chain Management & Logistics* (HSLU, MSc Information Management & Data Science) · Author: **Divya Shori**
+Case study for *Data-driven Supply Chain Management & Logistics* (HSLU, MSc in Data Science & Artificial Intelligence) · Author: **Divya Shori**
 
 ---
 
